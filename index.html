@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+ <link rel="stylesheet" href="./style.css" /> 
+    <title>Path Finding</title>
+
+</head>
+    
+    <body>
+     
+        <div class="title-container">
+            
+            <div class="help">
+                <button class="helpbtn" type="button" onclick="alert(' 1. Drag the Start icon to set the start point. \n 2. Drag the Goal icon to set the end point. \n 3. Press RESET button to clear the path and the obstacles. \n 4. Press Clear Path button to clear the path only. \n 5. Press the algorithm button to find the corresponding shortest path. \n 6. Check/Uncheck Allow Diagonal as per your requirement(by default it is checked). \n 7. Set the value of weight. \n 8.For more details refer to README.md section. ')">Instructions</button>
+            </div>
+           
+            <h1 class="title">PATHFINDER</h1>
+            
+            <div class="key">
+                <p>Start:</p><img class="kstart" src="/wallpaper/mars_rover3.png" alt=""><p>Goal:</p><img class="kgoal" src="/wallpaper/stop.png" alt=""><p>Block:</p><div class="kblock"></div><p>Path:</p><div class="kpath"></div>
+            </div>
+            
+        </div>
+            
+            
+        </div>
+            <img id="image" width="20" height="20" src="/wallpaper/mars_rover3.png" style="display: none;">
+            <img id="image2" width="20" height="20" src="/wallpaper/stop.png" style="display: none;">
+        <div >
+            
+            <canvas id='myCanvas' class='p-box' ></canvas>
+            
+        <div class="buttons"> 
+
+            <button  class ="reset-btn" onclick="reset()">Reset</button>
+            <button  class ="reset-btn" onclick="clear_path()">Clear Path</button>
+            <button  class ="start-btn"  onclick="solve_using_bfs()">Breadth-first</button>
+            <button  class ="start-btn"  onclick="solve_using_dijkstra()">Dijkstra</button>
+
+            <select name="bestfirst"  class ="sel" onchange="solve_using_bestfirst(this.value)">
+                <option value="none" selected disabled hidden>Best First</option>
+                <option value="manhattan"  class="option">Best First - manhattan</option>
+                <option value="euclidean"  class="option">Best First - Euclidean</option>
+                <option value="octile"  class="option">Best First - octile</option>
+                <option value="chebyshev"  class="option">Best First - chebyshev</option>    
+            </select>
+
+              
+            <select name="Astar" class ="sel" onchange="solve_using_astar(this.value)">
+                <option value="none" selected disabled hidden>A*</option>
+                <option value="manhattan" class="option">A* - manhattan</option>
+                <option value="euclidean" class="option" >A* - Euclidean</option>
+                <option value="octile"  class="option">A* - octile</option>
+                <option value="chebyshev"  class="option">A* - chebyshev</option>    
+            </select>
+
+            <select name="idastar" class ="sel" onchange="solve_using_idastar(this.value)">
+                <option value="none" selected disabled hidden>IDA*</option>
+                <option value="manhattan" class="option">IDA* - manhattan</option>
+                <option value="euclidean" class="option">IDA* - Euclidean</option>
+                <option value="octile" class="option">IDA* - octile</option>
+                <option value="chebyshev" class="option">IDA* - chebyshev</option>    
+            </select>
+            
+            <label for="fname" class ="weight" id="wait">Weight </label>
+            <input type="text" id="wgt" value="1" onchange="set_weight(this.value)"/> 
+           
+            
+            <label for="check" class = "check">
+            <input type="checkbox"  id="checkdiag" checked/>Allow Diagonal</label>
+
+        </div>
+
+        <p  style ="text-align: center" id="outcome"></p>
+
+        <p id ="para"> <span>Project hosted on <a href="https://github.com/Plaksha05/shortest_path.git">Github</a></span> </p>
+    
+        <script src='./breadth_first.js'></script>
+        <script src='./Astar.js'></script>
+        <script src='./dijkstra.js'></script>
+        <script src='./grid.js'></script>
+        <script src='./best_first.js'></script>
+        <script src ='./ida_star.js'></script>
+        <script src ='./heuristics.js'></script>
+        <script src ='./path.js'></script>
+        <script src ='./animation.js'></script>
+
+    </body>
+
+</html>
